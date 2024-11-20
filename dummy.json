@@ -1,0 +1,554 @@
+[
+    {
+        "name": "Mumbai",
+        "state": "Maharashtra",
+        "lat": 19.076,
+        "lng": 72.8777,
+        "pinCode": 400001,
+        "stopPoints": [
+            {
+                "stopId": 1,
+                "title": "Andheri East",
+                "directions": "East of Andheri Station",
+                "lat": 19.128,
+                "lng": 72.832
+            },
+            {
+                "stopId": 2,
+                "title": "Bandra",
+                "directions": "Near Bandra Station",
+                "lat": 19.055,
+                "lng": 72.832
+            }
+        ]
+    },
+    {
+        "name": "Delhi",
+        "state": "Delhi",
+        "lat": 28.6139,
+        "lng": 77.2090,
+        "pinCode": 110001,
+        "stopPoints": [
+            {
+                "stopId": 3,
+                "title": "Connaught Place",
+                "directions": "Central Business District",
+                "lat": 28.627,
+                "lng": 77.208
+            },
+            {
+                "stopId": 4,
+                "title": "Hauz Khas",
+                "directions": "Near Hauz Khas Village",
+                "lat": 28.549,
+                "lng": 77.210
+            }
+        ]
+    },
+    {
+        "name": "Bengaluru",
+        "state": "Karnataka",
+        "lat": 12.9716,
+        "lng": 77.5946,
+        "pinCode": 560001,
+        "stopPoints": [
+            {
+                "stopId": 5,
+                "title": "MG Road",
+                "directions": "Main Road",
+                "lat": 12.970,
+                "lng": 77.608
+            },
+            {
+                "stopId": 6,
+                "title": "Koramangala",
+                "directions": "Near Forum Mall",
+                "lat": 12.933,
+                "lng": 77.624
+            }
+        ]
+    },
+    {
+        "name": "Chennai",
+        "state": "Tamil Nadu",
+        "lat": 13.0827,
+        "lng": 80.2707,
+        "pinCode": 600001,
+        "stopPoints": [
+            {
+                "stopId": 7,
+                "title": "T. Nagar",
+                "directions": "Near T. Nagar Station",
+                "lat": 13.039,
+                "lng": 80.222
+            },
+            {
+                "stopId": 8,
+                "title": "Adyar",
+                "directions": "Near Adyar Bridge",
+                "lat": 13.002,
+                "lng": 80.262
+            }
+        ]
+    },
+    {
+        "name": "Kolkata",
+        "state": "West Bengal",
+        "lat": 22.5726,
+        "lng": 88.3639,
+        "pinCode": 700001,
+        "stopPoints": [
+            {
+                "stopId": 9,
+                "title": "Esplanade",
+                "directions": "Near Metro Station",
+                "lat": 22.567,
+                "lng": 88.342
+            },
+            {
+                "stopId": 10,
+                "title": "Park Street",
+                "directions": "Central Park Area",
+                "lat": 22.547,
+                "lng": 88.336
+            }
+        ]
+    },
+    {
+        "name": "Hyderabad",
+        "state": "Telangana",
+        "lat": 17.385,
+        "lng": 78.4867,
+        "pinCode": 500001,
+        "stopPoints": [
+            {
+                "stopId": 11,
+                "title": "Banjara Hills",
+                "directions": "Near Banjara Hills Road",
+                "lat": 17.420,
+                "lng": 78.448
+            },
+            {
+                "stopId": 12,
+                "title": "Hitech City",
+                "directions": "Near Hitech City",
+                "lat": 17.423,
+                "lng": 78.388
+            }
+        ]
+    },
+    {
+        "name": "Pune",
+        "state": "Maharashtra",
+        "lat": 18.5204,
+        "lng": 73.8567,
+        "pinCode": 411001,
+        "stopPoints": [
+            {
+                "stopId": 13,
+                "title": "Shivajinagar",
+                "directions": "Near Shivajinagar Station",
+                "lat": 18.530,
+                "lng": 73.857
+            },
+            {
+                "stopId": 14,
+                "title": "Kothrud",
+                "directions": "Near Kothrud Bus Depot",
+                "lat": 18.499,
+                "lng": 73.805
+            }
+        ]
+    },
+    {
+        "name": "Ahmedabad",
+        "state": "Gujarat",
+        "lat": 23.0225,
+        "lng": 72.5714,
+        "pinCode": 380001,
+        "stopPoints": [
+            {
+                "stopId": 15,
+                "title": "Sarkhej",
+                "directions": "Near Sarkhej Bus Station",
+                "lat": 23.034,
+                "lng": 72.558
+            },
+            {
+                "stopId": 16,
+                "title": "Vastrapur",
+                "directions": "Near Vastrapur Lake",
+                "lat": 23.042,
+                "lng": 72.511
+            }
+        ]
+    },
+    {
+        "name": "Jaipur",
+        "state": "Rajasthan",
+        "lat": 26.9124,
+        "lng": 75.7873,
+        "pinCode": 302001,
+        "stopPoints": [
+            {
+                "stopId": 17,
+                "title": "Sindhi Camp",
+                "directions": "Near Sindhi Camp",
+                "lat": 26.913,
+                "lng": 75.796
+            },
+            {
+                "stopId": 18,
+                "title": "M.I. Road",
+                "directions": "Near M.I. Road",
+                "lat": 26.914,
+                "lng": 75.788
+            }
+        ]
+    },
+    {
+        "name": "Chandigarh",
+        "state": "Chandigarh",
+        "lat": 30.7333,
+        "lng": 76.7794,
+        "pinCode": 160001,
+        "stopPoints": [
+            {
+                "stopId": 19,
+                "title": "Sector 17",
+                "directions": "Sector 17 Plaza",
+                "lat": 30.735,
+                "lng": 76.783
+            },
+            {
+                "stopId": 20,
+                "title": "Sector 22",
+                "directions": "Near Sector 22 Bus Stand",
+                "lat": 30.733,
+                "lng": 76.779
+            }
+        ]
+    },
+    {
+        "name": "Lucknow",
+        "state": "Uttar Pradesh",
+        "lat": 26.8467,
+        "lng": 80.9462,
+        "pinCode": 226001,
+        "stopPoints": [
+            {
+                "stopId": 21,
+                "title": "Hazratganj",
+                "directions": "Main Commercial Area",
+                "lat": 26.846,
+                "lng": 80.947
+            },
+            {
+                "stopId": 22,
+                "title": "Gomti Nagar",
+                "directions": "Near Gomti Nagar",
+                "lat": 26.855,
+                "lng": 80.948
+            }
+        ]
+    },
+    {
+        "name": "Patna",
+        "state": "Bihar",
+        "lat": 25.5941,
+        "lng": 85.1376,
+        "pinCode": 800001,
+        "stopPoints": [
+            {
+                "stopId": 23,
+                "title": "Patna Junction",
+                "directions": "Near Patna Junction Railway Station",
+                "lat": 25.594,
+                "lng": 85.139
+            },
+            {
+                "stopId": 24,
+                "title": "Dakbungalow",
+                "directions": "Near Dakbungalow",
+                "lat": 25.594,
+                "lng": 85.136
+            }
+        ]
+    },
+    {
+        "name": "Indore",
+        "state": "Madhya Pradesh",
+        "lat": 22.7196,
+        "lng": 75.8577,
+        "pinCode": 452001,
+        "stopPoints": [
+            {
+                "stopId": 25,
+                "title": "Rajwada",
+                "directions": "Near Rajwada",
+                "lat": 22.719,
+                "lng": 75.857
+            },
+            {
+                "stopId": 26,
+                "title": "Lal Baag",
+                "directions": "Near Lal Baag",
+                "lat": 22.725,
+                "lng": 75.852
+            }
+        ]
+    },
+    {
+        "name": "Bhopal",
+        "state": "Madhya Pradesh",
+        "lat": 23.2599,
+        "lng": 77.4126,
+        "pinCode": 462001,
+        "stopPoints": [
+            {
+                "stopId": 27,
+                "title": "New Market",
+                "directions": "Near New Market",
+                "lat": 23.260,
+                "lng": 77.410
+            },
+            {
+                "stopId": 28,
+                "title": "Bittan Market",
+                "directions": "Near Bittan Market",
+                "lat": 23.257,
+                "lng": 77.415
+            }
+        ]
+    },
+    {
+        "name": "Guwahati",
+        "state": "Assam",
+        "lat": 26.1445,
+        "lng": 91.7362,
+        "pinCode": 781001,
+        "stopPoints": [
+            {
+                "stopId": 29,
+                "title": "Paltan Bazaar",
+                "directions": "Near Paltan Bazaar",
+                "lat": 26.143,
+                "lng": 91.735
+            },
+            {
+                "stopId": 30,
+                "title": "Gopinath Nagar",
+                "directions": "Near Gopinath Nagar",
+                "lat": 26.148,
+                "lng": 91.740
+            }
+        ]
+    },
+    {
+        "name": "Dehradun",
+        "state": "Uttarakhand",
+        "lat": 30.3165,
+        "lng": 78.0322,
+        "pinCode": 248001,
+        "stopPoints": [
+            {
+                "stopId": 31,
+                "title": "Clock Tower",
+                "directions": "Near Clock Tower",
+                "lat": 30.316,
+                "lng": 78.035
+            },
+            {
+                "stopId": 32,
+                "title": "Rajpur Road",
+                "directions": "Near Rajpur Road",
+                "lat": 30.314,
+                "lng": 78.030
+            }
+        ]
+    },
+    {
+        "name": "Shimla",
+        "state": "Himachal Pradesh",
+        "lat": 31.1048,
+        "lng": 77.1734,
+        "pinCode": 171001,
+        "stopPoints": [
+            {
+                "stopId": 33,
+                "title": "The Mall Road",
+                "directions": "Near The Mall Road",
+                "lat": 31.105,
+                "lng": 77.175
+            },
+            {
+                "stopId": 34,
+                "title": "Ridge",
+                "directions": "Near Ridge",
+                "lat": 31.102,
+                "lng": 77.170
+            }
+        ]
+    },
+    {
+        "name": "Manali",
+        "state": "Himachal Pradesh",
+        "lat": 32.2396,
+        "lng": 77.1887,
+        "pinCode": 175131,
+        "stopPoints": [
+            {
+                "stopId": 35,
+                "title": "Mall Road",
+                "directions": "Near Mall Road",
+                "lat": 32.240,
+                "lng": 77.190
+            },
+            {
+                "stopId": 36,
+                "title": "Old Manali",
+                "directions": "Near Old Manali",
+                "lat": 32.237,
+                "lng": 77.185
+            }
+        ]
+    },
+    {
+        "name": "Rishikesh",
+        "state": "Uttarakhand",
+        "lat": 30.0869,
+        "lng": 78.2687,
+        "pinCode": 249201,
+        "stopPoints": [
+            {
+                "stopId": 37,
+                "title": "Laxman Jhula",
+                "directions": "Near Laxman Jhula",
+                "lat": 30.088,
+                "lng": 78.270
+            },
+            {
+                "stopId": 38,
+                "title": "Ram Jhula",
+                "directions": "Near Ram Jhula",
+                "lat": 30.085,
+                "lng": 78.267
+            }
+        ]
+    },
+    {
+        "name": "Haridwar",
+        "state": "Uttarakhand",
+        "lat": 29.9457,
+        "lng": 78.1642,
+        "pinCode": 249401,
+        "stopPoints": [
+            {
+                "stopId": 39,
+                "title": "Har Ki Pauri",
+                "directions": "Near Har Ki Pauri",
+                "lat": 29.946,
+                "lng": 78.165
+            },
+            {
+                "stopId": 40,
+                "title": "Maya Devi Temple",
+                "directions": "Near Maya Devi Temple",
+                "lat": 29.944,
+                "lng": 78.162
+            }
+        ]
+    },
+    {
+        "name": "Kullu",
+        "state": "Himachal Pradesh",
+        "lat": 31.942,
+        "lng": 77.117,
+        "pinCode": 175101,
+        "stopPoints": [
+            {
+                "stopId": 41,
+                "title": "Kullu Market",
+                "directions": "Near Kullu Market",
+                "lat": 31.944,
+                "lng": 77.118
+            },
+            {
+                "stopId": 42,
+                "title": "Bhuntar",
+                "directions": "Near Bhuntar",
+                "lat": 31.940,
+                "lng": 77.115
+            }
+        ]
+    },
+    {
+        "name": "Agra",
+        "state": "Uttar Pradesh",
+        "lat": 27.1767,
+        "lng": 78.0081,
+        "pinCode": 282001,
+        "stopPoints": [
+            {
+                "stopId": 43,
+                "title": "Taj Mahal",
+                "directions": "Near Taj Mahal",
+                "lat": 27.177,
+                "lng": 78.009
+            },
+            {
+                "stopId": 44,
+                "title": "Agra Fort",
+                "directions": "Near Agra Fort",
+                "lat": 27.175,
+                "lng": 78.011
+            }
+        ]
+    },
+    {
+        "name": "Varanasi",
+        "state": "Uttar Pradesh",
+        "lat": 25.3176,
+        "lng": 82.9739,
+        "pinCode": 221001,
+        "stopPoints": [
+            {
+                "stopId": 45,
+                "title": "Dashashwamedh Ghat",
+                "directions": "Near Dashashwamedh Ghat",
+                "lat": 25.318,
+                "lng": 82.974
+            },
+            {
+                "stopId": 46,
+                "title": "Kashi Vishwanath Temple",
+                "directions": "Near Kashi Vishwanath Temple",
+                "lat": 25.316,
+                "lng": 82.971
+            }
+        ]
+    },
+    {
+        "name": "Jodhpur",
+        "state": "Rajasthan",
+        "lat": 26.2389,
+        "lng": 73.0243,
+        "pinCode": 342001,
+        "stopPoints": [
+            {
+                "stopId": 47,
+                "title": "Clock Tower",
+                "directions": "Near Clock Tower",
+                "lat": 26.240,
+                "lng": 73.027
+            },
+            {
+                "stopId": 48,
+                "title": "Umaid Bhawan",
+                "directions": "Near Umaid Bhawan",
+                "lat": 26.235,
+                "lng": 73.020
+            }
+        ]
+    }
+]
