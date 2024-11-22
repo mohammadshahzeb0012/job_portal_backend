@@ -5,6 +5,7 @@ const connectDB = require("./utils/db")
 const cookieParser = require('cookie-parser');
 const cors = require("cors")
 require('dotenv').config();
+
 //file imports
 const isAuthenticated = require("./middlewares/isAuthenticated")
 const userRoute = require("./routes/user.route")
@@ -14,11 +15,15 @@ const applicationRoute = require("./routes/application.route");
 const userModel = require("./models/user.model");
 
 
+
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(cookieParser())
-app.use(cors())
+app.use(cors({
+    origin:    "https://job-portal-frontend-lac.vercel.app/",
+    credentials: true,
+}))
 
 app.get("/",(req,res)=>{
     res.send("home")
