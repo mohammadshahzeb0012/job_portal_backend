@@ -23,6 +23,14 @@ app.use(cors({
     credentials: true
 }))
 
+app.get("/",(req,res)=>{
+    let arrobj = [{
+        name: "jjj"
+    }]
+    arrobj[0].newField = "true"
+    res.send(arrobj)
+})
+
 // api's
 app.use("/api/v1/user", userRoute);
 app.use("/api/v1/company",companyRoute)

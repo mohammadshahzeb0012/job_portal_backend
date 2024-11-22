@@ -39,6 +39,30 @@ const postJob = async (req, res) => {
     }
 }
 
+const getHighlitJobs = async (req, res) => {
+    try {
+        const jobs = await Job.find()
+            .populate({
+                path: "company"
+            }).sort({ createdAt: -1 })
+            .limit(10);
+
+        if (!jobs) {
+            return res.status(404).json({
+                message: "Jobs not found.",
+                success: false
+            })
+        }
+
+        return res.status(200).json({
+            jobs,
+            success: true
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 const getAllJobs = async (req, res) => {
     const keyword = req.query.keyword || "";
     const userId = req.id
@@ -50,9 +74,10 @@ const getAllJobs = async (req, res) => {
             ]
         };
 
-        const jobs = await Job.find(query).populate({
-            path: "company"
-        }).sort({ createdAt: -1 });
+        const jobs = await Job.find(query)
+            .populate({
+                path: "company"
+            }).sort({ createdAt: -1 })
 
         if (!jobs) {
             return res.status(404).json({
@@ -65,18 +90,20 @@ const getAllJobs = async (req, res) => {
             userID: userId,
         }).select('jobId');
 
-        const savedJobIds = savedJobs.map((save)=>save.jobId.toString())
+        const savedJobIds = savedJobs.map((save) => save.jobId.toString())
+        const newArr = jobs?.map(job => job.toObject())
 
-        jobs.forEach((job)=>{
-            if(savedJobIds.includes(job._id.toString())){
+        newArr?.forEach((job) => {
+            if (savedJobIds.includes(job._id.toString())) {
                 job.saveForLater = true
-            }else{
+            } else {
                 job.saveForLater = false
             }
         })
 
+
         return res.status(200).json({
-            jobs,
+            jobs: [],
             success: true
         })
     } catch (error) {
@@ -192,4 +219,4 @@ const getJobById = async (req, res) => {
     }
 }
 
-module.exports = { postJob, saveForLater, getJobById, getSavedJobs, getAdminJobs, getAllJobs }
+module.exports = { postJob, saveForLater, getJobById, getSavedJobs, getAdminJobs, getAllJobs, getHighlitJobs }
