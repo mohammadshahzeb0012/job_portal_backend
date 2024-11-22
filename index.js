@@ -24,11 +24,7 @@ app.use(cors({
 }))
 
 app.get("/",(req,res)=>{
-    let arrobj = [{
-        name: "jjj"
-    }]
-    arrobj[0].newField = "true"
-    res.send(arrobj)
+    res.send("home")
 })
 
 // api's
