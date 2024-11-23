@@ -66,6 +66,7 @@ const getHighlitJobs = async (req, res) => {
 const getAllJobs = async (req, res) => {
     const keyword = req.query.keyword || "";
     const userId = req.id
+
     try {
         const query = {
             $or: [
@@ -101,9 +102,8 @@ const getAllJobs = async (req, res) => {
             }
         })
 
-
         return res.status(200).json({
-            jobs: [],
+            jobs: newArr,
             success: true
         })
     } catch (error) {

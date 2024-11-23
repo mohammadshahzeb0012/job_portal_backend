@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken")
 const isAuthenticated = async (req, res, next) => {
     try {
         const token = req.cookies.token;
-        console.log(token)
         if (!token) {
             if (!token) {
                 return res.status(401).json({
