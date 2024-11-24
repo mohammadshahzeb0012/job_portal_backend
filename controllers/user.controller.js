@@ -9,7 +9,7 @@ const cloudinaryv2 = require('cloudinary').v2;
 
 const register = async (req, res) => {
     const { fullname, email, phoneNumber, password, role } = req.body;
-    
+
     if (!fullname || !email || !phoneNumber || !password || !role) {
         return res.status(400).json({
             message: "Something is missing",
@@ -120,6 +120,27 @@ const logout = async (req, res) => {
     }
 }
 
+const ProfileDetails = async (req, res) => {
+    const userId = req.id;
+    try {
+        let user = await User.findById(userId).select("-password")
+        if (!user) {
+            return res.status(400).json({
+                message: "User not found.",
+                success: false
+            })
+        }
+
+        return res.status(200).json({
+            user: user,
+            success: true
+        })
+    } catch (error) {
+
+    }
+
+}
+
 const updateProfile = async (req, res) => {
     try {
         const { fullname, email, phoneNumber, bio, skills } = req.body;
@@ -135,7 +156,7 @@ const updateProfile = async (req, res) => {
         const file = req.file
         let cloudResponse = null;
 
-        
+
         if (file) {
             const fileUri = getDataUri(file)
             cloudResponse = await cloudinary.uploader.upload(fileUri.content)
@@ -230,5 +251,6 @@ const updateProfilePic = async (req, res) => {
 
 module.exports = {
     register, login, logout,
-    updateProfile, updateProfilePic
+    updateProfile, updateProfilePic,
+    ProfileDetails
 } 
