@@ -4,7 +4,9 @@ const jwt = require("jsonwebtoken");
 const getDataUri = require("../utils/datauri");
 const cloudinary = require('./../utils/cloudinary');
 const getMediaName = require("../utils/imageName");
+const sendEmail = require("../utils/SendEmail");
 const cloudinaryv2 = require('cloudinary').v2;
+const uaParser = require('ua-parser-js');
 
 
 const register = async (req, res) => {
@@ -67,7 +69,7 @@ const login = async (req, res) => {
         let user = await User.findOne({ email })
         if (!user) {
             return res.status(400).json({
-                message: "Incorrect email or password.",
+                message: "User not found.",
                 success: false,
             })
         }
@@ -86,6 +88,7 @@ const login = async (req, res) => {
                 success: false
             })
         }
+
         const tokenData = {
             userId: user._id
         }
@@ -99,7 +102,8 @@ const login = async (req, res) => {
             role: user.role,
             profile: user.profile
         }
-        return res.status(200).cookie("token", token, { maxAge: 1 * 24 * 60 * 60 * 1000, httpsOnly: true, sameSite: 'strict' }).json({
+
+        return res.status(200).cookie("token", token).json({
             message: `Welcome back ${user.fullname}`,
             user,
             success: true
@@ -117,6 +121,108 @@ const logout = async (req, res) => {
         })
     } catch (error) {
         console.log(error);
+    }
+}
+
+const sendForgotLink = async (req, res) => {
+    const { email, role } = req.body
+
+    if (!email || !role) {
+        return res.status(400).json({
+            message: "Something is missing",
+            success: false
+        });
+    }
+
+    try {
+
+        const userAgent = req.headers['user-agent'];
+        const parser = new uaParser();
+        const result = parser.setUA(userAgent).getResult();
+
+        const operatingSystem = result.os.name;
+        const browserName = result.browser.name;
+
+        let user = await User.findOne({ email })
+        if (!user) {
+            return res.status(400).json({
+                message: "User not found.",
+                success: false,
+            })
+        }
+
+        if (user.role !== role) {
+            return res.status(400).json({
+                message: "User not found with current role.",
+                success: false,
+            })
+        }
+
+        const payLoad = {
+            email: user.email,
+            userId: user._id
+        }
+
+        const sendData = await jwt.sign(payLoad, process.env.SECRET_KEY, { expiresIn: "10m" })
+        const subject = "Password Reset"
+        const name = user.fullname
+        await sendEmail({ email, subject, name, role, operatingSystem, browserName, sendData })
+
+        return res.status(200).json({
+            message: "Link sent on registerd mail",
+            success: true
+        })
+
+    } catch (error) {
+
+    }
+}
+
+const changePassword = async (req, res) => {
+    const { token, password } = req.body;
+    if (!token || !password) {
+        return res.status(400).json({
+            message: "Something is missing",
+            success: false
+        });
+    };
+
+    try {
+        const verifiedUser = await jwt.verify(token, process.env.SECRET_KEY)
+        const user = await User.findById(verifiedUser.userId)
+
+        if (!user) {
+            return res.status(400).json({
+                message: "user not found",
+                success: false
+            })
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10)
+
+       await User.findOneAndUpdate(
+            { _id: verifiedUser.userId },
+            { password: hashedPassword }
+        )
+
+        return res.status(200).json({
+            message: "Password changed",
+            success: true
+        })
+    } catch (err) {
+        if (err instanceof jwt.TokenExpiredError) {
+            return res.status(401).json({
+                message: "token expired",
+                success: false
+            })
+        }
+
+        if (err instanceof jwt.JsonWebTokenError) {
+            return res.status(401).json({
+                message: "Invalid token",
+                success: false
+            })
+        }
     }
 }
 
@@ -251,6 +357,7 @@ const updateProfilePic = async (req, res) => {
 
 module.exports = {
     register, login, logout,
+    sendForgotLink, changePassword,
     updateProfile, updateProfilePic,
     ProfileDetails
 } 

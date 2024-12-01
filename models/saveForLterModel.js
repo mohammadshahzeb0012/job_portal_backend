@@ -5,10 +5,10 @@ const saveForLaterSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
-    jobId:{
+    jobId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Job"
     }
-})
+}, { timestamps: true }, { strict: false })
 
-module.exports = mongoose.model("saveForLater",saveForLaterSchema)
+module.exports = mongoose.model("saveForLater", saveForLaterSchema)

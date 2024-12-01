@@ -80,7 +80,6 @@ const getCompanyById = async (req, res) => {
 const updateCompany = async (req, res) => {
     try {
         const { name, description, website, location } = req.body;
-
         const updateData = {}
         if (name) updateData.name = name;
         if (description) updateData.description = description;
@@ -97,7 +96,6 @@ const updateCompany = async (req, res) => {
 
         const file = req.file
         let cloudResponse = null;
-
         if (file) {
             const fileUri = getDataUri(file)
             cloudResponse = await cloudinary.uploader.upload(fileUri.content)
@@ -106,7 +104,6 @@ const updateCompany = async (req, res) => {
         if (cloudResponse !== null) {
             updateData.logo = cloudResponse.secure_url
         }
-
          await Company.findByIdAndUpdate(req.params.id, updateData, { new: true })
 
         return res.status(200).json({

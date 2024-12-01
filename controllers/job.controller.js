@@ -120,6 +120,7 @@ const getAdminJobs = async (req, res) => {
             path: 'company',
             createdAt: -1
         })
+
         if (!jobs) {
             return res.status(404).json({
                 message: "Jobs not found.",
@@ -137,9 +138,20 @@ const getAdminJobs = async (req, res) => {
 }
 
 const getSavedJobs = async (req, res) => {
-    const userId = req.id
-    console.log(userId)
-    res.send("gfds")
+    const userID = req.id
+    try {
+        const savedJobs = await saveForLaterSchema.find({
+            userID
+        }).populate({path: "jobId",populate:{path: "company"}})
+        .sort({createdAt: -1})
+
+        return res.status(200).json({
+            jobs: savedJobs,
+            success: true
+        })
+    } catch (error) {
+
+    }
 }
 
 const saveForLater = async (req, res) => {
@@ -206,7 +218,10 @@ const saveForLater = async (req, res) => {
 const getJobById = async (req, res) => {
     const jobId = req.params.id;
     try {
-        const job = await Job.findById(jobId).populate("applications")
+        const job = await Job.findById(jobId)
+        .populate("applications")
+        .populate("company")
+
         if (!job) {
             return res.status(404).json({
                 message: "Jobs not found.",
