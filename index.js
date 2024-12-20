@@ -16,12 +16,14 @@ const applicationRoute = require("./routes/application.route");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
-app.use(cors({
-    // origin: "http://localhost:5173",  
-    // origin: "https://job-portal-frontend-lac.vercel.app",  
-    origin: process.env.REQUEST_URL,
-    credentials: true,  
-  }));
+const corsOptions = {
+    origin: '*', 
+    credentials: true, 
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],  
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Custom-Header'],  
+  };
+  
+  app.use(cors(corsOptions));
 
 // app.use(cors());
 
