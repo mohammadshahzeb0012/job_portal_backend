@@ -16,6 +16,7 @@ const applicationRoute = require("./routes/application.route");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser())
+
 const corsOptions = {
     origin: '*', 
     credentials: true, 
