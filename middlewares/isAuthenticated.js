@@ -1,52 +1,46 @@
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
 
 const isAuthenticated = async (req, res, next) => {
     try {
-        const token = req?.cookies?.token || req?.headers["authorization"]?.slice(8);
-        // if (!token) {
-        //     return res.status(401).json({
-        //         message: "User not authenticated",
-        //         success: false,
-        //     })
-        // }
-        // const decode =  jwt.verify(token, process.env.SECRET_KEY)
-        // if (!decode) {
-        //     return res.status(401).json({
-        //         message: "Invalid token",
-        //         success: false
-        //     })
-        // };
-        // req.id = decode.userId;
-
+        const token = req?.cookies?.token || req?.headers["authorization"]?.split(" ")[1]
         if (!token) {
             return res.status(401).json({
-                message: "User not authenticated pleae login again",
+                message: "Session expired, please log in again",
                 success: false,
-            })
+            });
         }
-        const decode = await jwt.verify(token, process.env.SECRET_KEY);
-        if(!decode){
+
+        const decoded = jwt.verify(token, process.env.SECRET_KEY);
+
+        if (!decoded) {
             return res.status(401).json({
-                message:"Invalid token please login again",
-                success:false
-            })
-        };
-        req.id = decode.userId;
+                message: "Session expired, please log in again",
+                success: false,
+            });
+        }
+
+        req.userId = decoded.userId;
+
         next();
     } catch (err) {
-        // if (err instanceof jwt.TokenExpiredError) {
-        //     return res.status(401).json({
-        //         message: "token expired",
-        //         success: false
-        //     })
-        // }
-        // if (err instanceof jwt.JsonWebTokenError) {
-        //     return res.status(401).json({
-        //         message: "Invalid token",
-        //         success: false
-        //     })
-        // }
+        if (err.name === 'TokenExpiredError') {
+            return res.status(401).json({
+                message: "Session expired, please log in again",
+                success: false,
+            });
+        }
+        if (err.name === 'JsonWebTokenError') {
+            return res.status(400).json({
+                message: "Invalid token, please log in again",
+                success: false,
+            });
+        }
+        
+        return res.status(500).json({
+            message: "An unexpected error occurred, please try again later",
+            success: false,
+        });
     }
-}
+};
 
-module.exports = isAuthenticated
+module.exports = isAuthenticated;
