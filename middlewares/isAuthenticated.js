@@ -26,7 +26,19 @@ const isAuthenticated = async (req, res, next) => {
         console.log("after all")
         next();
     } catch (err) {
-   console.log("middleware error",err)
+        if (err.name === "JsonWebTokenError") {
+            console.error("JWT malformed error:", err.message);
+            return res.status(400).json({
+                message: "Malformed token. Please provide a valid token.",
+                success: false,
+            });
+        } else {
+            console.error("Error in authentication middleware:", err);
+            return res.status(500).json({
+                message: "Internal server error.",
+                success: false,
+            });
+        }
     }
 }
 
