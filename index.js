@@ -19,18 +19,15 @@ app.use(cookieParser())
 
 const corsOptions = {
     origin: ["https://job-portal-frontend-lac.vercel.app",
-             "http://localhost:5173"      
-    ], 
-    credentials: true, 
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],  
-    allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Custom-Header'],  
-  };
-  
-  app.use(cors(corsOptions));
+        "http://localhost:5173"
+    ],
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'X-Custom-Header'],
+};
+app.use(cors(corsOptions));
 
-// app.use(cors());
-
-app.get("/", (req,res)=>{
+app.get("/", (req, res) => {
     return res.send("home")
 })
 

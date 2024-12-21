@@ -66,7 +66,7 @@ const getHighlitJobs = async (req, res) => {
 const getAllJobs = async (req, res) => {
     const keyword = req.query.keyword || "";
     const userId = req.id
-
+    console.log("alljobs hited before res")
     try {
         const query = {
             $or: [
@@ -101,6 +101,7 @@ const getAllJobs = async (req, res) => {
                 job.saveForLater = false
             }
         })
+        console.log("alljobs hited after res")
 
         return res.status(200).json({
             jobs: newArr,
@@ -142,8 +143,8 @@ const getSavedJobs = async (req, res) => {
     try {
         const savedJobs = await saveForLaterSchema.find({
             userID
-        }).populate({path: "jobId",populate:{path: "company"}})
-        .sort({createdAt: -1})
+        }).populate({ path: "jobId", populate: { path: "company" } })
+            .sort({ createdAt: -1 })
 
         return res.status(200).json({
             jobs: savedJobs,
@@ -219,8 +220,8 @@ const getJobById = async (req, res) => {
     const jobId = req.params.id;
     try {
         const job = await Job.findById(jobId)
-        .populate("applications")
-        .populate("company")
+            .populate("applications")
+            .populate("company")
 
         if (!job) {
             return res.status(404).json({

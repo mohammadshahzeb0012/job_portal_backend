@@ -107,6 +107,7 @@ const login = async (req, res) => {
         res.cookie("token", token,{
             secure: true,
         })
+        
         return res.status(200).json({
             message: `Welcome back ${user.fullname}`,
             user,
