@@ -104,12 +104,10 @@ const login = async (req, res) => {
             profile: user.profile
         }
 
-        res.cookie("token", token,{
-            secure: true,
-        })
         return res.status(200).json({
             message: `Welcome back ${user.fullname}`,
             user,
+            token,
             success: true
         })
     } catch (error) {
