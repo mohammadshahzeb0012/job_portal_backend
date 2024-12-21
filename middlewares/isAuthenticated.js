@@ -4,8 +4,10 @@ const isAuthenticated = async (req, res, next) => {
     console.log("auth middleware hited")
 
     try {
-        const token = req?.cookies?.token || req?.headers["authorization"]?.slice(8);
-        console.log("token")
+        const token = req?.cookies?.token || req?.headers["authorization"]?.split(" ")[1];
+
+        // const token = req?.cookies?.token || req?.headers["authorization"]?.slice(8);
+        console.log(token)
         if (!token) {
             return res.status(401).json({
                 message: "Session expired please login again",
