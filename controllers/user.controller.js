@@ -93,7 +93,7 @@ const login = async (req, res) => {
             userId: user._id
         }
         
-        const token = await jwt.sign(tokenData, process.env.SECRET_KEY)
+        const token = await jwt.sign(tokenData, process.env.SECRET_KEY,{expiresIn: "15d"})
 
         user = {
             _id: user._id,
@@ -107,7 +107,6 @@ const login = async (req, res) => {
         res.cookie("token", token,{
             secure: true,
         })
-        
         return res.status(200).json({
             message: `Welcome back ${user.fullname}`,
             user,
